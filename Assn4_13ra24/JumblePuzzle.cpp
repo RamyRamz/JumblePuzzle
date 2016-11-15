@@ -27,7 +27,25 @@ JumblePuzzle::JumblePuzzle(const string& toHide, const string& diff) {
 		len *= 4;
 	else
 		throw BadJumbleException("Difficulty must be Easy, Medium, or Hard")
+
+	jumble = new char*[len]
+
+	for (int i = 0; i < len; i++)
+		jumble[i] = new char[len]
 }
+
+	const char* letters = "abcdefghijklmnopqrstuvwxyz";
+
+	srand(time(NULL));
+
+	for (int i = 0; i < len; i++)
+		for (int j = 0; i < len; j++)
+			jumble[i][j] = (char) letters[rand() % 25]
+
+	row = rand() % len;
+	col = rand() % len;
+
+	jumble[row][col] = toHide.at(0)
 
 JumblePuzzle::~JumblePuzzle() {
 	// TODO Auto-generated destructor stub
